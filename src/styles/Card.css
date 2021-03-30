@@ -1,0 +1,35 @@
+.card {
+	display: grid;
+	grid-template-rows: 7% 80% 13%;
+	grid-template-columns: 100%;
+	justify-items: center;
+	align-items: center;
+
+	height: 90%;
+	width: 20%;
+	padding: 5px;
+	
+	color: white;
+	background-color: black;
+}
+
+.card h4 {
+	white-space: nowrap;
+}
+
+.card .icon-50px {
+	width: 10vw;
+	min-width: 25px;
+	max-width: 50px;
+}
+
+@media (max-width: 810px){
+	.card {
+		width: 33.33%;
+	}
+
+	.card h4 {
+		margin: 0px;
+		font-size: .25em;
+	}
+}

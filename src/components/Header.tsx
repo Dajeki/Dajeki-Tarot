@@ -1,0 +1,38 @@
+import "../styles/Header.css";
+import Glow from "./Glow";
+import Login from "./GoogleOAuth/Login";
+import Logout from "./GoogleOAuth/Logout";
+
+function Header(): JSX.Element {
+	/*
+	 * TODO: Conditional render the login our logout button based on state
+	 * TODO: Conditional render the username based on state
+	 */
+
+	return (
+		<header>
+			<img
+				className={"logo"}
+				src={process.env.PUBLIC_URL + "/images/symbols/crystalball.svg"}
+				alt="Crystal Ball with eye in center"
+			/>
+			<Glow className="title">
+				<h1>Dajeki Tarot</h1>
+			</Glow>
+			<div className={"userServicesSection"}>
+				<Login />
+				<Logout />
+				<h3 className={"username"}>Username State</h3>
+			</div>
+			<Glow className={"logout-button"} toggle={true}>
+				<img
+					src={process.env.PUBLIC_URL + "/images/symbols/login.svg"}
+					alt="login or logout button"
+					className={"icon-50px"}
+				/>
+			</Glow>
+		</header>
+	);
+}
+
+export default Header;

@@ -1,0 +1,10 @@
+.mat {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	height: 70vh;
+	margin: 10px;
+
+	background-color: rgba(0,0,0, .5);
+}
