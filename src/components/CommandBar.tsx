@@ -6,19 +6,19 @@ import Glow from "./Glow";
 // TODO: Setup functionality for elements Draw, Shuffle, Select Spread, Save
 // REQUIRED: Backend functionality first.
 function CommandBar(): JSX.Element {
-	let images = [
-		`${process.env.PUBLIC_URL}/images/symbols/action/drawcard.svg`,
-		`${process.env.PUBLIC_URL}/images/symbols/action/shuffle.svg`,
-		`${process.env.PUBLIC_URL}/images/symbols/action/savespread.svg`
+	const images = [
+		`${ process.env.PUBLIC_URL }/images/symbols/action/drawcard.svg`,
+		`${ process.env.PUBLIC_URL }/images/symbols/action/shuffle.svg`,
+		`${ process.env.PUBLIC_URL }/images/symbols/action/savespread.svg`,
 	];
 
-	const { popout, setPopout } = useContext(PopoutContext);
+	const { popout, setPopout } = useContext( PopoutContext );
 
 	return (
 		<footer>
 			<div className={"commandBar default-border-radius"}>
 				{images.map(
-					(element: string, indx: number): JSX.Element => {
+					( element: string, indx: number ): JSX.Element => {
 
 						return (
 							<Glow toggle={true} key={indx}>
@@ -29,15 +29,15 @@ function CommandBar(): JSX.Element {
 								/>
 							</Glow>
 						);
-					}
+					},
 				)}
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
-							setPopout([!popout[0], false]);
+							setPopout( [!popout[0], false] );
 						}}
 						className={"icon-50px"}
-						src={`${process.env.PUBLIC_URL}/images/symbols/action/tarotspread.svg`}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/action/tarotspread.svg`}
 						alt={""}
 					/>
 				</Glow>

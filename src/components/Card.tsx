@@ -1,7 +1,13 @@
 import "../styles/Card.css";
 import Glow from "./Glow";
 
-function Card(): JSX.Element {
+type cardProp = {
+	name?: string,
+	element?: TarotElements,
+	suit?: TarotSuits
+}
+
+function Card({ name, element, suit } : cardProp ): JSX.Element {
 	/*
 	 * TODO: Conditionally render cards for the randomly selected tarot card.
 	 * TODO: Maintain state information so they can be used for shared state of the information panel
@@ -9,33 +15,32 @@ function Card(): JSX.Element {
 
 	return (
 		<div className={"card default-border-radius"}>
-			<h4>CARD NAME</h4>
+			<h4>{name}</h4>
 			<img
 				src={
-					process.env.PUBLIC_URL +
-					"/images/rider-waite/front/major/1Magician.jpg"
+					`${ process.env.PUBLIC_URL }/images/rider-waite/front/major/1Magician.jpg`
 				}
 				alt={""}
 				style={{ height: "100%", maxWidth: "100%" }}
 			/>
 			<div
 				style={{
-					display: "flex",
+					display       : "flex",
 					justifyContent: "space-evenly",
-					width: "100%"
+					width         : "100%",
 				}}
 			>
 				<Glow>
 					<img
 						className={"icon-50px"}
-						src={`${process.env.PUBLIC_URL}/images/symbols/elements/air.svg`}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/elements/${element}.svg`}
 						alt={""}
 					/>
 				</Glow>
 				<Glow>
 					<img
 						className={"icon-50px"}
-						src={`${process.env.PUBLIC_URL}/images/symbols/elements/spirit.svg`}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/elements/${suit}.svg`}
 						alt={""}
 					/>
 				</Glow>

@@ -1,6 +1,6 @@
 import GoogleLogin, {
 	GoogleLoginResponse,
-	GoogleLoginResponseOffline
+	GoogleLoginResponseOffline,
 } from "react-google-login";
 import { refreshTokenSetup } from "../../utils/refreshToken";
 
@@ -12,23 +12,30 @@ function Login(): JSX.Element {
 	 *	On successful login or when login still available, send the information to the backend and make sure that user is registered
 	 *	Setup the automatic refresh for the token based on the current response expires_in in the auth response.
 	 */
-	function onSuccess(res: GoogleLoginResponse | GoogleLoginResponseOffline) {
-		console.log("[Login Success] Current User:", res as GoogleLoginResponse);
+	function onSuccess( res: GoogleLoginResponse | GoogleLoginResponseOffline ) {
+		console.log( "[Login Success] Current User:", res as GoogleLoginResponse );
 
-		fetch("http://localhost:8080/getLogonInfo", {
+		fetch( "http://localhost:8080/userInfo/login", {
 			headers: {
-				authorization: `Bearer ${(res as GoogleLoginResponse).tokenId}`
-			}
+				authorization: `Bearer ${ ( res as GoogleLoginResponse ).tokenId }`,
+			},
 		})
-			.then(res => res.text())
-			.then(data => console.log(data))
-			.catch(e => console.log(e));
+			.then( res => res.text())
+			.then( data => console.log( data ))
+			.catch( e => console.log( e ));
 
-		refreshTokenSetup(res as GoogleLoginResponse);
+
+		refreshTokenSetup( res as GoogleLoginResponse );
+
+		// fetch("http://localhost:8080/cards/3")
+		// 	.then(res => res.json())
+		// 	.then(data => console.log(data))
+		// 	.catch(e => console.log(e));
+
 	}
 
-	function onFailure(res: GoogleLoginResponse) {
-		console.log("[Login Success] Current User:", res);
+	function onFailure( res: GoogleLoginResponse ) {
+		console.log( "[Login Success] Already Logged In:", res );
 	}
 
 	return (

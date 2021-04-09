@@ -3,15 +3,13 @@ import { useContext } from "react";
 import { PopoutContext } from "../hooks/PopoutContextController";
 
 function Popout(): JSX.Element {
-	let {
-		popout: [popoutOpen, popoutInitialClick]
-	} = useContext(PopoutContext);
+	const {
+		popout: [popoutOpen, popoutInitialClick],
+	} = useContext( PopoutContext );
 
 	return (
 		<div
-			className={`${
-				popoutOpen ? "slide-in-left" : "slide-out-left"
-			} popout default-border-radius`}
+			className={`${ popoutOpen ? "slide-in-left" : "slide-out-left" } popout default-border-radius`}
 			style={{ display: popoutInitialClick ? "none" : "block" }}
 		>
 			some text

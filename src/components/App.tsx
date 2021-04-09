@@ -6,11 +6,8 @@ import CommandBar from "./CommandBar";
 import Popout from "./Popout";
 import { PopoutProvider } from "../hooks/PopoutContextController";
 
-type AppProps = {};
-
-//TODO: Add slidout nav to
-function App(props: AppProps): JSX.Element {
-	const [popout, setPopout] = useState([false, true] as [boolean,boolean]);
+function App(): JSX.Element {
+	const [popout, setPopout] = useState( [false, true] as [boolean, boolean] );
 
 	return (
 		<div className={"programContainer"}>

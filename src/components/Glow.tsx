@@ -9,33 +9,33 @@ interface MyProps {
 function Glow({
 	className: origClassName,
 	children,
-	toggle
-}: React.PropsWithChildren<MyProps>) {
+	toggle,
+}: React.PropsWithChildren<MyProps> ): JSX.Element {
 	//click and hover state of glow icons
-	const [hovered, setHovered] = useState(false);
-	const [clicked, setClicked] = useState(false);
+	const [hovered, setHovered] = useState( false );
+	const [clicked, setClicked] = useState( false );
 
-	if (React.Children.count(children) !== 1) {
-		throw new Error("💥 Glow effect can only have one child element.");
+	if ( React.Children.count( children ) !== 1 ) {
+		throw new Error( "💥 Glow effect can only have one child element." );
 	}
 
-	let childAsReactElement = children as React.ReactElement<any, string>;
+	const childAsReactElement = children as React.ReactElement<any, string>;
 
 	const toggleHover = () => {
-		setHovered(!hovered);
+		setHovered( !hovered );
 	};
 
-	const toggleClick = (function () {
+	const toggleClick = ( function () {
 		let currentTimeout: NodeJS.Timeout;
 
 		return function () {
-			setClicked(true);
-			if (currentTimeout) {
-				clearTimeout(currentTimeout);
+			setClicked( true );
+			if ( currentTimeout ) {
+				clearTimeout( currentTimeout );
 			}
 			currentTimeout = setTimeout(() => {
-				setClicked(false);
-			}, 150);
+				setClicked( false );
+			}, 150 );
 		};
 	})();
 
@@ -44,35 +44,34 @@ function Glow({
 	//attach a toggle and click handle if the Glow element toggle prop true
 	const childWithBlur = React.cloneElement(
 		childAsReactElement,
-		toggle
-			? {
-					className: `${glowHoverIntesifier} ${
-						childAsReactElement.props.className || ""
-					} abs-blur`
-			  }
-			: {
-					className: `${childAsReactElement.props.className || ""} abs-blur`
-			  }
+		toggle ?
+			{
+				className: `${ glowHoverIntesifier } ${ childAsReactElement.props.className || "" } abs-blur`,
+			}
+			:
+			{
+				className: `${ childAsReactElement.props.className || "" } abs-blur`,
+			},
 	);
 
-	const childMain = React.cloneElement(childAsReactElement, {
-		className: childAsReactElement.props.className
+	const childMain = React.cloneElement( childAsReactElement, {
+		className: childAsReactElement.props.className,
 	});
 
-	let glowIconClickedDrop = clicked ? "clicked-glow" : "";
+	const glowIconClickedDrop = clicked ? "clicked-glow" : "";
 
 	return (
 		<div
 			onMouseDown={toggle ? toggleClick : undefined}
 			onMouseEnter={toggleHover}
 			onMouseLeave={toggleHover}
-			className={`glow-container ${origClassName || ""} ${glowIconClickedDrop}`}
+			className={`glow-container ${ origClassName || "" } ${ glowIconClickedDrop }`}
 		>
 			{childWithBlur}
 			{childMain}
 		</div>
 	);
-	
+
 }
 
 export default Glow;

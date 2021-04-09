@@ -13,7 +13,7 @@ function Header(): JSX.Element {
 		<header>
 			<img
 				className={"logo"}
-				src={process.env.PUBLIC_URL + "/images/symbols/crystalball.svg"}
+				src={`${ process.env.PUBLIC_URL  }/images/symbols/crystalball.svg`}
 				alt="Crystal Ball with eye in center"
 			/>
 			<Glow className="title">
@@ -26,7 +26,7 @@ function Header(): JSX.Element {
 			</div>
 			<Glow className={"logout-button"} toggle={true}>
 				<img
-					src={process.env.PUBLIC_URL + "/images/symbols/login.svg"}
+					src={`${ process.env.PUBLIC_URL  }/images/symbols/login.svg`}
 					alt="login or logout button"
 					className={"icon-50px"}
 				/>
