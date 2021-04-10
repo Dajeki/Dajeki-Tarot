@@ -18,7 +18,7 @@ function Card({ name, element, suit } : cardProp ): JSX.Element {
 			<h4>{name}</h4>
 			<img
 				src={
-					`${ process.env.PUBLIC_URL }/images/rider-waite/front/major/1Magician.jpg`
+					`${ process.env.PUBLIC_URL }/images/rider-waite/front/${ suit }/${ name }.jpg`
 				}
 				alt={""}
 				style={{ height: "100%", maxWidth: "100%" }}
@@ -33,14 +33,15 @@ function Card({ name, element, suit } : cardProp ): JSX.Element {
 				<Glow>
 					<img
 						className={"icon-50px"}
-						src={`${ process.env.PUBLIC_URL }/images/symbols/elements/${element}.svg`}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/elements/${ element }.svg`}
 						alt={""}
 					/>
 				</Glow>
+
 				<Glow>
 					<img
 						className={"icon-50px"}
-						src={`${ process.env.PUBLIC_URL }/images/symbols/elements/${suit}.svg`}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/suits/${ suit }.svg`}
 						alt={""}
 					/>
 				</Glow>

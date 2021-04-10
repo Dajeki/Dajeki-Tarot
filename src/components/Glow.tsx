@@ -40,17 +40,18 @@ function Glow({
 	})();
 
 	const glowHoverIntesifier = hovered ? "increase-glow" : "";
+	const passeedDownClasses = childAsReactElement.props.className || "";
 
 	//attach a toggle and click handle if the Glow element toggle prop true
 	const childWithBlur = React.cloneElement(
 		childAsReactElement,
 		toggle ?
 			{
-				className: `${ glowHoverIntesifier } ${ childAsReactElement.props.className || "" } abs-blur`,
+				className: `${ glowHoverIntesifier } ${ passeedDownClasses } abs-blur`,
 			}
 			:
 			{
-				className: `${ childAsReactElement.props.className || "" } abs-blur`,
+				className: `${ passeedDownClasses } abs-blur`,
 			},
 	);
 

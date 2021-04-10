@@ -59,7 +59,7 @@
 
 		"no-var": "error",
 		"prefer-const": "error",
-		"camelcase": "error",
+		"camelcase": 1,
 
 		"one-var-declaration-per-line": [
 			"error", 

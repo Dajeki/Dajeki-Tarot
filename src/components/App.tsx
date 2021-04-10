@@ -5,18 +5,22 @@ import CardMat from "./CardMat";
 import CommandBar from "./CommandBar";
 import Popout from "./Popout";
 import { PopoutProvider } from "../hooks/PopoutContextController";
+import { DrawnCardProvider } from "../hooks/DrawnCardsContextController";
 
 function App(): JSX.Element {
 	const [popout, setPopout] = useState( [false, true] as [boolean, boolean] );
+	const [cardsDrawn, setCardsDrawn] = useState( [] as CardApiReturn[] );
 
 	return (
 		<div className={"programContainer"}>
 			<Header />
-			<PopoutProvider value={{ popout, setPopout }}>
-				<Popout />
-				<CardMat />
-				<CommandBar />
-			</PopoutProvider>
+			<DrawnCardProvider value={{ cardsDrawn, setCardsDrawn }}>
+				<PopoutProvider value={{ popout, setPopout }}>
+					<Popout />
+					<CardMat />
+					<CommandBar />
+				</PopoutProvider>
+			</DrawnCardProvider>
 		</div>
 	);
 }
