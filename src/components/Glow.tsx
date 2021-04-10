@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import "../styles/Glow.css";
 
-interface MyProps {
+type MyProps = {
 	toggle?: boolean;
 	className?: string;
 }
 
+type WithChildren<T extends Record<string, unknown>> = T & {
+	children: React.ReactElement<MyProps>
+}
+
 function Glow({
 	className: origClassName,
-	children,
+	children : child,
 	toggle,
-}: React.PropsWithChildren<MyProps> ): JSX.Element {
+}: WithChildren<MyProps> ): JSX.Element {
 	//click and hover state of glow icons
 	const [hovered, setHovered] = useState( false );
 	const [clicked, setClicked] = useState( false );
 
-	if ( React.Children.count( children ) !== 1 ) {
+	if ( React.Children.count( child ) !== 1 ) {
 		throw new Error( "💥 Glow effect can only have one child element." );
 	}
-
-	const childAsReactElement = children as React.ReactElement<any, string>;
 
 	const toggleHover = () => {
 		setHovered( !hovered );
@@ -40,11 +42,11 @@ function Glow({
 	})();
 
 	const glowHoverIntesifier = hovered ? "increase-glow" : "";
-	const passeedDownClasses = childAsReactElement.props.className || "";
+	const passeedDownClasses = child.props.className || "";
 
 	//attach a toggle and click handle if the Glow element toggle prop true
 	const childWithBlur = React.cloneElement(
-		childAsReactElement,
+		child,
 		toggle ?
 			{
 				className: `${ glowHoverIntesifier } ${ passeedDownClasses } abs-blur`,
@@ -55,8 +57,8 @@ function Glow({
 			},
 	);
 
-	const childMain = React.cloneElement( childAsReactElement, {
-		className: childAsReactElement.props.className,
+	const childMain = React.cloneElement( child, {
+		className: child.props.className,
 	});
 
 	const glowIconClickedDrop = clicked ? "clicked-glow" : "";
