@@ -13,7 +13,7 @@ function CommandBar(): JSX.Element {
 	];
 
 	const { popout, setPopout } = useContext( PopoutContext );
-	const { cardsDrawn, setCardsDrawn } = useContext( DrawnCardContext );
+	const { setCardsDrawn } = useContext( DrawnCardContext );
 
 	return (
 		<footer>

@@ -1,13 +1,18 @@
+import { useState } from "react";
 import "../styles/Header.css";
 import Glow from "./Glow";
 import Login from "./GoogleOAuth/Login";
 import Logout from "./GoogleOAuth/Logout";
+import { UsernameProvider } from "../hooks/UsernameContextController";
+
 
 function Header(): JSX.Element {
 	/*
 	 * TODO: Conditional render the login our logout button based on state
 	 * TODO: Conditional render the username based on state
 	 */
+
+	const [username, setUsername] = useState( "" );
 
 	return (
 		<header>
@@ -20,9 +25,11 @@ function Header(): JSX.Element {
 				<h1>Dajeki Tarot</h1>
 			</Glow>
 			<div className={"userServicesSection"}>
-				<Login />
-				<Logout />
-				<h3 className={"username"}>Username State</h3>
+				<UsernameProvider value={{ setUsername }}>
+					<Login />
+					<Logout />
+				</UsernameProvider>
+				<h3 className={"username"}>{username}</h3>
 			</div>
 			<Glow className={"logout-button"} toggle={true}>
 				<img

@@ -1,37 +1,43 @@
-import GoogleLogin, {
-	GoogleLoginResponse,
-	GoogleLoginResponseOffline,
-} from "react-google-login";
+import { useContext } from "react";
+import { UsernameContext } from "../../hooks/UsernameContextController";
+import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { refreshTokenSetup } from "../../utils/refreshToken";
 
-const clientId =
-	"914582580489-tms667vjlg9nq2n7c2rkjfbadsk2bsrp.apps.googleusercontent.com";
+const clientId = process.env.REACT_APP_CLIENT_ID;
 
 function Login(): JSX.Element {
 	/*
 	 *	On successful login or when login still available, send the information to the backend and make sure that user is registered
 	 *	Setup the automatic refresh for the token based on the current response expires_in in the auth response.
 	 */
+
+	if ( clientId === undefined ) {
+		throw new Error( "Must set REACT_APP_CLIENT_ID in .env file in project root." );
+	}
+
+	//Context provided from header element.
+	const { setUsername } = useContext( UsernameContext );
+
 	function onSuccess( res: GoogleLoginResponse | GoogleLoginResponseOffline ) {
 		console.log( "[Login Success] Current User:", res as GoogleLoginResponse );
 
-		fetch( "http://localhost:8080/userInfo/login", {
-			headers: {
-				authorization: `Bearer ${ ( res as GoogleLoginResponse ).tokenId }`,
-			},
-		})
-			.then( res => res.text())
-			.then( data => console.log( data ))
-			.catch( e => console.log( e ));
+		//Check to make sure the response is a GoogleLoginResponse and that the user is actually signed in.
+		if ( "profileObj" in res && res.isSignedIn()) {
 
+			setUsername( res.profileObj.givenName );
 
-		refreshTokenSetup( res as GoogleLoginResponse );
+			fetch( "http://localhost:8080/userInfo/login", {
+				headers: {
+					authorization: `Bearer ${ res.tokenId }`,
+				},
+			})
+				.then( res => res.text())
+				.then( data => console.log( data ))
+				.catch( e => console.log( e ));
 
-		// fetch("http://localhost:8080/cards/3")
-		// 	.then(res => res.json())
-		// 	.then(data => console.log(data))
-		// 	.catch(e => console.log(e));
+			refreshTokenSetup( res as GoogleLoginResponse );
 
+		}
 	}
 
 	function onFailure( res: GoogleLoginResponse ) {

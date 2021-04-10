@@ -4,11 +4,8 @@ import "../styles/CardMat.css";
 import Card from "./Card";
 
 function CardMat(): JSX.Element {
-	/*
-	 * TODO: NONE!
-	 */
 
-	const { cardsDrawn, setCardsDrawn } = useContext( DrawnCardContext );
+	const { cardsDrawn } = useContext( DrawnCardContext );
 
 	return (
 		<div className={"mat default-border-radius"}>
