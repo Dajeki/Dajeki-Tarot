@@ -5,7 +5,6 @@ import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
 import Glow from "./Glow";
 
 // TODO: Setup functionality for elements Draw, Shuffle, Select Spread, Save
-// REQUIRED: Backend functionality first.
 function CommandBar(): JSX.Element {
 	const images = [
 		`${ process.env.PUBLIC_URL }/images/symbols/action/shuffle.svg`,

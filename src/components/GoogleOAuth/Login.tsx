@@ -36,7 +36,6 @@ function Login(): JSX.Element {
 				.catch( e => console.log( e ));
 
 			refreshTokenSetup( res as GoogleLoginResponse );
-
 		}
 	}
 
