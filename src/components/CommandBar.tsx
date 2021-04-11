@@ -1,18 +1,18 @@
 import "../styles/CommandBar.css";
 import { useContext } from "react";
+import Glow from "./Glow";
 import { PopoutContext } from "../hooks/PopoutContextController";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
-import Glow from "./Glow";
+import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
 
-// TODO: Setup functionality for elements Draw, Shuffle, Select Spread, Save
+import { EPopupMenus } from "../utils/EPopupMenus";
+
+// TODO: Setup functionality for elements Save, previous spreads, information
 function CommandBar(): JSX.Element {
-	const images = [
-		`${ process.env.PUBLIC_URL }/images/symbols/action/shuffle.svg`,
-		`${ process.env.PUBLIC_URL }/images/symbols/action/savespread.svg`,
-	];
 
 	const { popout, setPopout } = useContext( PopoutContext );
 	const { setCardsDrawn } = useContext( DrawnCardContext );
+	const { setDisplayedMenu } = useContext( DisplayedMenuContext );
 
 	return (
 		<footer>
@@ -42,27 +42,37 @@ function CommandBar(): JSX.Element {
 				</Glow>
 
 
-				{images.map(
-					( element: string, indx: number ): JSX.Element => {
-
-						return (
-							<Glow toggle={true} key={indx}>
-								<img
-									className={"icon-50px"}
-									src={process.env.PUBLIC_URL + element}
-									alt={""}
-								/>
-							</Glow>
-						);
-					},
-				)}
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
 							setPopout( [!popout[0], false] );
+							setDisplayedMenu( EPopupMenus.PastSpread );
+						}}
+						className={"icon-50px"}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/action/shuffle.svg`}
+						alt={""}
+					/>
+				</Glow>
+
+				<Glow toggle={true}>
+					<img
+						onClick={() => {
+							setPopout( [!popout[0], false] );
+							setDisplayedMenu( EPopupMenus.SpreadInfo );
 						}}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/tarotspread.svg`}
+						alt={""}
+					/>
+				</Glow>
+
+				<Glow toggle={true}>
+					<img
+						onClick={() => {
+							return;
+						}}
+						className={"icon-50px"}
+						src={`${ process.env.PUBLIC_URL }/images/symbols/action/savespread.svg`}
 						alt={""}
 					/>
 				</Glow>
