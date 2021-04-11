@@ -62,9 +62,11 @@ header h1 {
 }
 
 .username {
+	display: inline-block;
 	justify-self: end;
 	word-wrap: none;
 	white-space: nowrap;
+	width: min-content;
 }
 
 .logo {

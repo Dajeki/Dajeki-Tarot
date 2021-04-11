@@ -24,20 +24,21 @@ function Header(): JSX.Element {
 			<Glow className="title">
 				<h1>Dajeki Tarot</h1>
 			</Glow>
+			<Glow style={{ display: "inline-block", justifySelf: "flex-end" }}>
+				<h3 className={"username"}>{username}</h3>
+			</Glow>
 			<div className={"userServicesSection"}>
 				<UsernameProvider value={{ setUsername }}>
-					<Login />
-					<Logout />
+					{( username ) ? <Logout /> : <Login />}
 				</UsernameProvider>
-				<h3 className={"username"}>{username}</h3>
 			</div>
-			<Glow className={"logout-button"} toggle={true}>
+			{/* <Glow className={"logout-button"} toggle={true}>
 				<img
 					src={`${ process.env.PUBLIC_URL  }/images/symbols/login.svg`}
 					alt="login or logout button"
 					className={"icon-50px"}
 				/>
-			</Glow>
+			</Glow> */}
 		</header>
 	);
 }

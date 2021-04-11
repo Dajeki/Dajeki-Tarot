@@ -4,6 +4,7 @@ import "../styles/Glow.css";
 type MyProps = {
 	toggle?: boolean;
 	className?: string;
+	style ?: React.CSSProperties
 }
 
 type WithChildren<T extends Record<string, unknown>> = T & {
@@ -14,6 +15,7 @@ function Glow({
 	className: origClassName,
 	children : child,
 	toggle,
+	style : glowStyle,
 }: WithChildren<MyProps> ): JSX.Element {
 	//click and hover state of glow icons
 	const [hovered, setHovered] = useState( false );
@@ -69,6 +71,7 @@ function Glow({
 			onMouseEnter={toggleHover}
 			onMouseLeave={toggleHover}
 			className={`glow-container ${ origClassName || "" } ${ glowIconClickedDrop }`}
+			style={glowStyle}
 		>
 			{childWithBlur}
 			{childMain}
