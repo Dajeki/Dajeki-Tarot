@@ -12,7 +12,7 @@ function CommandBar(): JSX.Element {
 	];
 
 	const { popout, setPopout } = useContext( PopoutContext );
-	const { setCardsDrawn } = useContext( DrawnCardContext );
+	const { cardsDrawn, setCardsDrawn } = useContext( DrawnCardContext );
 
 	return (
 		<footer>
@@ -21,17 +21,20 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={async () => {
-							const response = await fetch( "http://localhost:8080/cards/1" );
+							const response = await fetch( "http://localhost:8080/cards/3" );
 							const cardResponse: CardApiReturn[] | { error: string } = await response.json();
 
 							//If there is an error property in the object we need to display that instead of messing with the cardsDrawn array
 							if ( "error" in cardResponse ) {
 								console.log( cardResponse.error );
+								return;
 							}
-							else {
-								setCardsDrawn(( prevVal ) => ( prevVal.length === 3 ) ? [cardResponse[0]] : [...prevVal, cardResponse[0]] );
-							}
-						}}
+
+							setCardsDrawn( [] );
+							setCardsDrawn( cardResponse );
+
+						}
+						}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/drawcard.svg`}
 						alt={""}

@@ -1,20 +1,20 @@
 .abs-blur {
 	position: absolute;
 	filter: blur(4px);
-	background-color: rgba(255,255,255,0);
-	transition: .25s all linear;
-	-webkit-transition: .25s -webkit-filter linear;
-	-moz-transition: .25s -moz-filter linear;
-	-ms-transition: .25s -ms-filter linear;
-	-o-transition: .25s -o-filter linear;
+	background-color: rgba(255, 255, 255, 0);
+	transition: 0.25s all linear;
+	-webkit-transition: 0.25s -webkit-filter linear;
+	-moz-transition: 0.25s -moz-filter linear;
+	-ms-transition: 0.25s -ms-filter linear;
+	-o-transition: 0.25s -o-filter linear;
 }
 
 .increase-glow {
 	filter: blur(7px);
-	background-color: rgba(64, 22, 82,.45)
+	background-color: rgba(64, 22, 82, 0.45);
 }
 
 .clicked-glow {
 	top: 10px;
-	position:relative;
+	position: relative;
 }

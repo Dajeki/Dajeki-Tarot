@@ -14,7 +14,7 @@ function Card({ name, element, suit } : cardProp ): JSX.Element {
 	 */
 
 	return (
-		<div className={"card default-border-radius"}>
+		<div className={"card fade-in-bottom-rotate default-border-radius"}>
 			<h4>{name}</h4>
 			<img
 				src={
@@ -37,7 +37,6 @@ function Card({ name, element, suit } : cardProp ): JSX.Element {
 						alt={""}
 					/>
 				</Glow>
-
 				<Glow>
 					<img
 						className={"icon-50px"}
