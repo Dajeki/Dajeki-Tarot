@@ -4,14 +4,11 @@ import Glow from "./Glow";
 type cardProp = {
 	name?: string,
 	element?: TarotElements,
-	suit?: TarotSuits
+	suit?: TarotSuits,
+	style?: React.CSSProperties,
 }
 
-function Card({ name, element, suit } : cardProp ): JSX.Element {
-	/*
-	 * TODO: Conditionally render cards for the randomly selected tarot card.
-	 * TODO: Maintain state information so they can be used for shared state of the information panel
-	 */
+function Card({ name, element, suit, style:cardDirectionStyle } : cardProp ): JSX.Element {
 
 	return (
 		<div className={"card fade-in-bottom-rotate default-border-radius"}>
@@ -21,7 +18,7 @@ function Card({ name, element, suit } : cardProp ): JSX.Element {
 					`${ process.env.PUBLIC_URL }/images/rider-waite/front/${ suit }/${ name }.jpg`
 				}
 				alt={""}
-				style={{ height: "100%", maxWidth: "100%" }}
+				style={{ ...cardDirectionStyle, height: "100%", maxWidth: "100%" }}
 			/>
 			<div
 				style={{

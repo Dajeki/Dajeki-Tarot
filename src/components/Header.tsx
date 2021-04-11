@@ -7,11 +7,6 @@ import { UsernameProvider } from "../hooks/UsernameContextController";
 
 
 function Header(): JSX.Element {
-	/*
-	 * TODO: Conditional render the login our logout button based on state
-	 * TODO: Conditional render the username based on state
-	 */
-
 	const [username, setUsername] = useState( "" );
 
 	return (
@@ -32,13 +27,6 @@ function Header(): JSX.Element {
 					{( username ) ? <Logout /> : <Login />}
 				</UsernameProvider>
 			</div>
-			{/* <Glow className={"logout-button"} toggle={true}>
-				<img
-					src={`${ process.env.PUBLIC_URL  }/images/symbols/login.svg`}
-					alt="login or logout button"
-					className={"icon-50px"}
-				/>
-			</Glow> */}
 		</header>
 	);
 }

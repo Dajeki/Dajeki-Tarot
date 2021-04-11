@@ -9,7 +9,17 @@ function CardMat(): JSX.Element {
 
 	return (
 		<div className={"mat default-border-radius"}>
-			{cardsDrawn.map(( cardDrawn ) => ( <Card name={cardDrawn.card_name} element={cardDrawn.element} suit={cardDrawn.suit} /> ))}
+			{
+				cardsDrawn.map(( cardDrawn, indx ) => (
+					<Card
+						style={( cardDrawn.card_meaning_up ) ? {} : { transform: "rotate(180deg)" }}
+						name={cardDrawn.card_name}
+						element={cardDrawn.element}
+						suit={cardDrawn.suit}
+						key={indx}
+					/>
+				))
+			}
 		</div>
 	);
 }

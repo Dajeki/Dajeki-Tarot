@@ -62,16 +62,6 @@ function CommandBar(): JSX.Element {
 							setPopout( [!popout[0], false] );
 						}}
 						className={"icon-50px"}
-						src={"https://img.icons8.com/fluent-systems-regular/100/FFFFFF/planner.png"}
-						alt={""}
-					/>
-				</Glow>
-				<Glow toggle={true}>
-					<img
-						onClick={() => {
-							setPopout( [!popout[0], false] );
-						}}
-						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/tarotspread.svg`}
 						alt={""}
 					/>
