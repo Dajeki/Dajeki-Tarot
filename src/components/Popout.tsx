@@ -4,18 +4,19 @@ import { PopoutContext } from "../hooks/PopoutContextController";
 import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
 
 import { EPopupMenus } from "../utils/EPopupMenus";
+import SpreadInfo from "./SpreadInfo";
 
 function Popout(): JSX.Element {
 	const {
 		popout: [popoutOpen, popoutInitialClick],
 	} = useContext( PopoutContext );
-	const { displayedMenu, setDisplayedMenu } = useContext( DisplayedMenuContext );
+	const { displayedMenu } = useContext( DisplayedMenuContext );
 
 	function getCurrentDisplayedMenuElement(): JSX.Element {
 		//Stupid type coehersion for enum to a number
 		switch ( +displayedMenu ) {
 			case EPopupMenus.SpreadInfo:
-				return ( <div>LOOKING AT SPREAD INFO</div> );
+				return ( <SpreadInfo/> );
 			case EPopupMenus.PastSpread:
 				return ( <div>LOOKING AT PAST SPREADS</div> );
 			default:
