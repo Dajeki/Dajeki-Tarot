@@ -1,5 +1,5 @@
 import "../styles/CommandBar.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Glow from "./Glow";
 import { PopoutContext } from "../hooks/PopoutContextController";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
@@ -13,6 +13,8 @@ function CommandBar(): JSX.Element {
 	const { popout, setPopout } = useContext( PopoutContext );
 	const { setCardsDrawn } = useContext( DrawnCardContext );
 	const { setDisplayedMenu } = useContext( DisplayedMenuContext );
+
+	const [lastClickedMenu, setLastClickedMenu] = useState( undefined as unknown as EPopupMenus );
 
 	return (
 		<footer>
@@ -45,8 +47,17 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
-							setPopout( [!popout[0], false] );
+							console.log( +lastClickedMenu === EPopupMenus.PastSpread );
+							if ( +lastClickedMenu === EPopupMenus.PastSpread ) {
+								setPopout( [false, false] );
+								//-1 to reset the enum last clicked so both buttons work to open up menu back up.
+								setLastClickedMenu( -1 );
+								return;
+							}
+
+							setPopout( [true, false] );
 							setDisplayedMenu( EPopupMenus.PastSpread );
+							setLastClickedMenu( EPopupMenus.PastSpread );
 						}}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/shuffle.svg`}
@@ -57,8 +68,18 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
-							setPopout( [!popout[0], false] );
+
+							if ( +lastClickedMenu === EPopupMenus.SpreadInfo ) {
+								setPopout( [false, false] );
+								//-1 to reset the enum last clicked so both buttons work to open up menu back up.
+								setLastClickedMenu( -1 );
+								return;
+							}
+
+							setPopout( [true, false] );
 							setDisplayedMenu( EPopupMenus.SpreadInfo );
+							setLastClickedMenu( EPopupMenus.SpreadInfo );
+
 						}}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/tarotspread.svg`}
