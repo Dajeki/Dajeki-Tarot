@@ -19,15 +19,15 @@
 	color: white;
 }
 
-.spreadInfo h5 {
-	
-}
-
 .spreadInfo div {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;
+}
+
+.spreadInfo p {
+	width: 80%;
 }
 
 .spreadInfo img {
