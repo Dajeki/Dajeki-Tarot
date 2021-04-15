@@ -47,7 +47,6 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
-							console.log( +lastClickedMenu === EPopupMenus.PastSpread );
 							if ( +lastClickedMenu === EPopupMenus.PastSpread ) {
 								setPopout( [false, false] );
 								//-1 to reset the enum last clicked so both buttons work to open up menu back up.
