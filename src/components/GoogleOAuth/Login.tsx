@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { UsernameContext } from "../../hooks/UsernameContextController";
+import { JwtContext } from "../../hooks/UserJWTContextController";
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { refreshTokenSetup } from "../../utils/refreshToken";
+
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
@@ -17,6 +19,7 @@ function Login(): JSX.Element {
 
 	//Context provided from header element.
 	const { setUsername } = useContext( UsernameContext );
+	const { setJwt } = useContext( JwtContext );
 
 	function onSuccess( res: GoogleLoginResponse | GoogleLoginResponseOffline ) {
 		console.log( "[Login Success] Current User:", res as GoogleLoginResponse );
@@ -25,6 +28,7 @@ function Login(): JSX.Element {
 		if ( "profileObj" in res && res.isSignedIn()) {
 
 			setUsername( res.profileObj.givenName );
+			setJwt( res.tokenId );
 
 			fetch( "http://localhost:8080/userInfo/login", {
 				headers: {

@@ -1,4 +1,5 @@
 export enum EPopupMenus {
 	SpreadInfo,
-	PastSpread
+	PastSpread,
+	SaveSpread
 }

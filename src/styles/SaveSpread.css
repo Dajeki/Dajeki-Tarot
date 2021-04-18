@@ -1,0 +1,24 @@
+.saveSpread {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:center;
+	height: 100%;
+}
+
+.saveBtn {
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.saveSpread form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+	height: 70%;
+
+	color: white;
+}

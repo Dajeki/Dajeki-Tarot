@@ -12,7 +12,7 @@ function SpreadInfo(): JSX.Element {
 			{
 				cardsDrawn.map(( cardDrawn, indx ) => {
 					return (
-						<div className={"spreadInfo"}>
+						<div key={indx} className={"spreadInfo"}>
 							<div>
 								<img src={`${ process.env.PUBLIC_URL }/images/symbols/cards.svg`} />
 								<h4 style={{ display: "inline-block" }}>{`Card ${ indx + 1 } Meaning`}</h4>

@@ -1,10 +1,12 @@
-import "../styles/Popout.css";
 import { useContext } from "react";
 import { PopoutContext } from "../hooks/PopoutContextController";
 import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
 
+import "../styles/Popout.css";
+
 import { EPopupMenus } from "../utils/EPopupMenus";
 import SpreadInfo from "./SpreadInfo";
+import SaveSpread from "./SaveSpread";
 
 function Popout(): JSX.Element {
 	const {
@@ -18,7 +20,9 @@ function Popout(): JSX.Element {
 			case EPopupMenus.SpreadInfo:
 				return ( <SpreadInfo/> );
 			case EPopupMenus.PastSpread:
-				return ( <div>LOOKING AT PAST SPREADS</div> );
+				return ( <div>IN PAST SPREAD!</div> );
+			case EPopupMenus.SaveSpread:
+				return ( <SaveSpread /> );
 			default:
 				return ( <div>HIT DEFAULT?</div> );
 		}

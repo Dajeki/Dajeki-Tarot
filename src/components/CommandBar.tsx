@@ -49,7 +49,7 @@ function CommandBar(): JSX.Element {
 						onClick={() => {
 							if ( +lastClickedMenu === EPopupMenus.PastSpread ) {
 								setPopout( [false, false] );
-								//-1 to reset the enum last clicked so both buttons work to open up menu back up.
+								//-1 to reset the enum last clicked so buttons work to open the menu back up.
 								setLastClickedMenu( -1 );
 								return;
 							}
@@ -70,7 +70,7 @@ function CommandBar(): JSX.Element {
 
 							if ( +lastClickedMenu === EPopupMenus.SpreadInfo ) {
 								setPopout( [false, false] );
-								//-1 to reset the enum last clicked so both buttons work to open up menu back up.
+								//-1 to reset the enum last clicked so buttons work to open the menu back up.
 								setLastClickedMenu( -1 );
 								return;
 							}
@@ -89,7 +89,17 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={() => {
-							return;
+
+							if ( +lastClickedMenu === EPopupMenus.SaveSpread ) {
+								setPopout( [false, false] );
+								//-1 to reset the enum last clicked so buttons work to open the menu back up.
+								setLastClickedMenu( -1 );
+								return;
+							}
+
+							setPopout( [true, false] );
+							setDisplayedMenu( EPopupMenus.SaveSpread );
+							setLastClickedMenu( EPopupMenus.SaveSpread );
 						}}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/savespread.svg`}
