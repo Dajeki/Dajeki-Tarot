@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState, useRef, MouseEventHandler, MouseEvent, SelectHTMLAttributes } from "react";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
 import { JwtContext } from "../hooks/UserJWTContextController";
 
@@ -6,13 +6,16 @@ import "../styles/SaveSpread.css";
 
 function SaveSpread(): JSX.Element {
 
-	const [selectedVal, setSelectedVal] = useState( "" );
+	const [selectedVal, setSelectedVal] = useState( "0" );
 	const { cardsDrawn } = useContext( DrawnCardContext );
 	const { jwt } = useContext( JwtContext );
 
-	function handleSelectedVal( event : ChangeEvent<HTMLSelectElement> ) {
-		setSelectedVal( event.target.value );
-		console.log( `Set selected val to ${ event.target.value }` );
+	const selectMenuRef= useRef<HTMLSelectElement>( null );
+
+	function handleSelectedVal( event: ChangeEvent<HTMLSelectElement> ) {
+		console.log( event.currentTarget.value );
+		setSelectedVal( event.currentTarget.value );
+		console.log( `Set selected val to ${ event.currentTarget.value }` );
 	}
 
 	/**
@@ -45,32 +48,55 @@ function SaveSpread(): JSX.Element {
 		}
 	}
 
+	function handleSelectOnClick( e: MouseEvent<HTMLSelectElement | HTMLDivElement> ) {
+		if( selectMenuRef.current ) {
+			selectMenuRef.current.size = selectMenuRef.current.size === 9 ? 1 : 9;
+		}
+		if( +( e.target as HTMLSelectElement ).value >= 0 ) {
+			setSelectedVal(( e.target as HTMLSelectElement ).value );
+			console.log( `Set value to: ${ ( e.target as HTMLSelectElement ).value }` );
+		}
+
+	}
+
 	return (
 		<div className={"saveSpread"}>
 			<form onSubmit={saveSpreadFormSubmit}>
 				<div>
 					<label htmlFor="spreadType"><h3>Spread Meaning</h3></label>
-					<select
-						value={selectedVal}
-						onChange={handleSelectedVal}
-						className="spreadSelect"
-						id="spreadTye"
-					>
-						<option value="1">Past, Present, Future</option>
-						<option value="2">Nature, Cause, Solution</option>
-						<option value="3">Situation, Obstacle, Advice</option>
-						<option value="4">Current Standing, Aspire, How</option>
-						<option value="5">You, Person, Relationship</option>
-						<option value="6">Strength, Weakness, Advice</option>
-						<option value="7">Mind, Body, Spirit</option>
-						<option value="8">You, Your Current Path, Your Potential</option>
-					</select>
+					<div className={"customSelect"}>
+						<select
+							value={selectedVal}
+							className="spreadSelect"
+							id="spreadType"
+							ref={selectMenuRef}
+							onMouseDown={handleSelectOnClick}
+						>
+							<option value="0"></option>
+							<option value="1">Past, Present, Future</option>
+							<option value="2">Nature, Cause, Solution</option>
+							<option value="3">Situation, Obstacle, Advice</option>
+							<option value="4">Current Standing, Aspire, How</option>
+							<option value="5">You, Person, Relationship</option>
+							<option value="6">Strength, Weakness, Advice</option>
+							<option value="7">Mind, Body, Spirit</option>
+							<option value="8">You, Your Current Path, Your Potential</option>
+						</select>
+						<div
+							className={"selectIcon"}
+							onClick={handleSelectOnClick}
+						>
+							<img src="https://img.icons8.com/metro/26/ACACAC/expand-arrow.png" />
+						</div>
+					</div>
 				</div>
 				<button
 					type={"submit"}
 					className="saveBtn"
-					disabled={selectedVal === ""}
-				/>
+					disabled={selectedVal === "0"}
+				>
+					Save Spread
+				</button>
 			</form>
 		</div>
 	);
