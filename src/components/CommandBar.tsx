@@ -10,7 +10,7 @@ import { EPopupMenus } from "../utils/EPopupMenus";
 // TODO: Setup functionality for elements Save, previous spreads, information
 function CommandBar(): JSX.Element {
 
-	const { popout, setPopout } = useContext( PopoutContext );
+	const { setPopout } = useContext( PopoutContext );
 	const { setCardsDrawn } = useContext( DrawnCardContext );
 	const { setDisplayedMenu } = useContext( DisplayedMenuContext );
 

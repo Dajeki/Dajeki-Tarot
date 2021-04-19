@@ -31,6 +31,7 @@ function Login(): JSX.Element {
 			setJwt( res.tokenId );
 
 			fetch( "http://localhost:8080/userInfo/login", {
+				method : "POST",
 				headers: {
 					authorization: `Bearer ${ res.tokenId }`,
 				},

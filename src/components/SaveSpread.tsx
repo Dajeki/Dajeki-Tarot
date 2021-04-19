@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useContext, useState, useRef, MouseEventHandler, MouseEvent, SelectHTMLAttributes } from "react";
+import { FormEvent, useContext, useState, useRef, MouseEvent } from "react";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
 import { JwtContext } from "../hooks/UserJWTContextController";
 
@@ -11,12 +11,6 @@ function SaveSpread(): JSX.Element {
 	const { jwt } = useContext( JwtContext );
 
 	const selectMenuRef= useRef<HTMLSelectElement>( null );
-
-	function handleSelectedVal( event: ChangeEvent<HTMLSelectElement> ) {
-		console.log( event.currentTarget.value );
-		setSelectedVal( event.currentTarget.value );
-		console.log( `Set selected val to ${ event.currentTarget.value }` );
-	}
 
 	/**
 	 * Send to the backend in form of
@@ -54,7 +48,6 @@ function SaveSpread(): JSX.Element {
 		}
 		if( +( e.target as HTMLSelectElement ).value >= 0 ) {
 			setSelectedVal(( e.target as HTMLSelectElement ).value );
-			console.log( `Set value to: ${ ( e.target as HTMLSelectElement ).value }` );
 		}
 
 	}
@@ -71,6 +64,7 @@ function SaveSpread(): JSX.Element {
 							id="spreadType"
 							ref={selectMenuRef}
 							onMouseDown={handleSelectOnClick}
+							onChange={() => { return; }} //onMouseDown handles the onChange one source of truth for custom select menu.
 						>
 							<option value="0"></option>
 							<option value="1">Past, Present, Future</option>
