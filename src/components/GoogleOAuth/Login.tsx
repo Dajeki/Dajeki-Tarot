@@ -36,8 +36,10 @@ function Login(): JSX.Element {
 					authorization: `Bearer ${ res.tokenId }`,
 				},
 			})
-				.then( res => res.text())
-				.then( data => console.log( data ))
+				.then( res => res.json())
+				.then( data =>
+					console.log( data.success ? `Success: ${ data.success }` : "", data.error ? `Error: ${ data.error }` : "" ),
+				)
 				.catch( e => console.log( e ));
 
 			refreshTokenSetup( res as GoogleLoginResponse );

@@ -38,7 +38,11 @@ function SaveSpread(): JSX.Element {
 					spreadDir: `${ cardsDrawn[0].card_meaning_up?1:0 }${ cardsDrawn[1].card_meaning_up?1:0 }${ cardsDrawn[2].card_meaning_up?1:0 }`,
 				}),
 
-			}).then( res =>{ console.log( res ); });
+			})
+				.then( res => res.json())
+				.then( data =>
+					console.log( data.success ? `Success: ${ data.success }` : "", data.error ? `Error: ${ data.error }` : "" ),
+				);
 		}
 	}
 
