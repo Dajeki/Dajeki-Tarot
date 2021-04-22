@@ -19,10 +19,12 @@ function Header(): JSX.Element {
 			<Glow className="title">
 				<h1>Dajeki Tarot</h1>
 			</Glow>
-			<Glow style={{ display: "inline-block", justifySelf: "flex-end" }}>
-				<h3 className={"username"}>{userInfo.username}</h3>
-			</Glow>
-			<img className={"profilePic"} src={userInfo.imgUrl}/>
+			<div className={"username"}>
+				<Glow style={{ display: "inline-block", justifySelf: "flex-end" }}>
+					<h3 >{userInfo.username}</h3>
+				</Glow>
+				<img className={"profilePic"} src={userInfo.imgUrl} />
+			</div>
 			<div className={"userServicesSection"}>
 				<UserInfoProvider value={{ setUserInfo }}>
 					{( userInfo.username ) ? <Logout /> : <Login />}

@@ -1,6 +1,6 @@
 header {
 	display: grid;
-	grid-template-columns: min-content 1fr 1fr min-content min-content;
+	grid-template-columns: min-content 1fr 1fr min-content;
 	column-gap: 10px;
 	align-items: center;
 	width: 100%;
@@ -29,6 +29,7 @@ header h1 {
 		grid-template-columns: min-content 1fr;
 		grid-template-rows: min-content min-content;
 		flex-wrap: wrap;
+		height: unset;
 	}
 
 	header .logo {
@@ -59,6 +60,14 @@ header h1 {
 		justify-self: end;
 		align-self: center;
 	}
+
+	header h3 {
+		margin: 0px;
+	}
+
+	.profilePic {
+		height: 30px;
+	}
 }
 
 .username {
@@ -67,6 +76,7 @@ header h1 {
 	word-wrap: none;
 	white-space: nowrap;
 	width: min-content;
+	height: min-content;
 }
 
 .logo {
@@ -77,5 +87,7 @@ header h1 {
 
 .profilePic {
 	border-radius: 50%;
-	height: 35%;
+	max-height: 80px;
+	vertical-align: middle;
+	margin: 0 4px;
 }

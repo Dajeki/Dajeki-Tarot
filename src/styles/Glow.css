@@ -18,3 +18,7 @@
 	top: 10px;
 	position: relative;
 }
+
+.glow-container {
+	padding: 5px;
+}

@@ -40,6 +40,10 @@
 	.card h4 {
 		margin: 0px;
 		font-size: 0.25em;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		max-width: -webkit-fill-available;
 	}
 }
 
