@@ -10,7 +10,9 @@ function SaveSpread(): JSX.Element {
 	const { cardsDrawn } = useContext( DrawnCardContext );
 	const { jwt } = useContext( JwtContext );
 
-	const selectMenuRef= useRef<HTMLSelectElement>( null );
+	const selectMenuRef = useRef<HTMLSelectElement>( null );
+	//Used for adding error responses
+	const errorMessageRef = useRef<HTMLDivElement>( null );
 
 	/**
 	 * Send to the backend in form of
@@ -35,14 +37,29 @@ function SaveSpread(): JSX.Element {
 					cards    : [cardsDrawn[0].id, cardsDrawn[1].id, cardsDrawn[2].id],
 					spreadId : selectedVal,
 					//This is the bitmap string
-					spreadDir: `${ cardsDrawn[0].card_meaning_up?1:0 }${ cardsDrawn[1].card_meaning_up?1:0 }${ cardsDrawn[2].card_meaning_up?1:0 }`,
+					spreadDir: `${ cardsDrawn[0].card_meaning_up ? 1 : 0 }${ cardsDrawn[1].card_meaning_up ? 1 : 0 }${ cardsDrawn[2].card_meaning_up ? 1 : 0 }`,
 				}),
 
 			})
 				.then( res => res.json())
-				.then( data =>
-					console.log( data.success ? `Success: ${ data.success }` : "", data.error ? `Error: ${ data.error }` : "" ),
-				);
+				.then( data => {
+					const utcd = new Date();
+					utcd.setTime( data.availDate );
+					//If there is an error in this object for this response, it could come with an availDate telling when the next available time you could save.
+					if ( errorMessageRef.current && data.error ) {
+						const timeToReset = 24 - ( utcd.getTimezoneOffset() / 60 );
+						errorMessageRef.current.innerText =
+						( data.error ? `${ data.error }` : "" ) +
+							( data.availDate ? `\nCome back ${ utcd.toLocaleDateString() }` +
+								` @ ${ timeToReset % 12 }${ ( Math.floor( timeToReset / 12 ) % 2 !== 0 ) ? "pm" : "am" }`
+								:
+								""
+							);
+					}
+					if ( errorMessageRef.current && data.success ) {
+						errorMessageRef.current.innerText = data.success;
+					}
+				});
 		}
 	}
 
@@ -53,7 +70,6 @@ function SaveSpread(): JSX.Element {
 		if( +( e.target as HTMLSelectElement ).value >= 0 ) {
 			setSelectedVal(( e.target as HTMLSelectElement ).value );
 		}
-
 	}
 
 	return (
@@ -95,6 +111,7 @@ function SaveSpread(): JSX.Element {
 				>
 					Save Spread
 				</button>
+				<div ref={errorMessageRef}></div>
 			</form>
 		</div>
 	);

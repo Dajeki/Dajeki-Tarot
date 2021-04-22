@@ -1,18 +1,17 @@
 import { useContext } from "react";
 import { GoogleLogout } from "react-google-login";
 import { JwtContext } from "../../hooks/UserJWTContextController";
-import { UsernameContext } from "../../hooks/UsernameContextController";
+import { UserInfoContext } from "../../hooks/UserInfoContextController";
 
 const clientId = process.env.REACT_APP_CLIENT_ID as string;
 
 function Logout(): JSX.Element {
 
-	const { setUsername } = useContext( UsernameContext );
+	const { setUserInfo } = useContext( UserInfoContext );
 	const { setJwt } = useContext( JwtContext );
 
 	function onSuccess() {
-		alert( "Logout made successfully ✌🏻" );
-		setUsername( "" );
+		setUserInfo({ username: "", imgUrl: "" });
 		setJwt( "" );
 	}
 

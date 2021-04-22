@@ -3,11 +3,11 @@ import "../styles/Header.css";
 import Glow from "./Glow";
 import Login from "./GoogleOAuth/Login";
 import Logout from "./GoogleOAuth/Logout";
-import { UsernameProvider } from "../hooks/UsernameContextController";
+import { UserInfoProvider } from "../hooks/UserInfoContextController";
 
 
 function Header(): JSX.Element {
-	const [username, setUsername] = useState( "" );
+	const [userInfo, setUserInfo] = useState({ username: "", imgUrl: "" });
 
 	return (
 		<header>
@@ -20,12 +20,13 @@ function Header(): JSX.Element {
 				<h1>Dajeki Tarot</h1>
 			</Glow>
 			<Glow style={{ display: "inline-block", justifySelf: "flex-end" }}>
-				<h3 className={"username"}>{username}</h3>
+				<h3 className={"username"}>{userInfo.username}</h3>
 			</Glow>
+			<img className={"profilePic"} src={userInfo.imgUrl}/>
 			<div className={"userServicesSection"}>
-				<UsernameProvider value={{ setUsername }}>
-					{( username ) ? <Logout /> : <Login />}
-				</UsernameProvider>
+				<UserInfoProvider value={{ setUserInfo }}>
+					{( userInfo.username ) ? <Logout /> : <Login />}
+				</UserInfoProvider>
 			</div>
 		</header>
 	);

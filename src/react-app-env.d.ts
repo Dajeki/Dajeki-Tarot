@@ -12,3 +12,8 @@ type CardApiReturn = {
 	card_meaning_up		?: string,
 	card_meaning_down	?: string,
 }
+
+type DajekiTarotUser = {
+	username: string,
+	imgUrl: string
+}

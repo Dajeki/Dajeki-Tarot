@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UsernameContext } from "../../hooks/UsernameContextController";
+import { UserInfoContext } from "../../hooks/UserInfoContextController";
 import { JwtContext } from "../../hooks/UserJWTContextController";
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { refreshTokenSetup } from "../../utils/refreshToken";
@@ -18,7 +18,7 @@ function Login(): JSX.Element {
 	}
 
 	//Context provided from header element.
-	const { setUsername } = useContext( UsernameContext );
+	const { setUserInfo } = useContext( UserInfoContext );
 	const { setJwt } = useContext( JwtContext );
 
 	function onSuccess( res: GoogleLoginResponse | GoogleLoginResponseOffline ) {
@@ -27,7 +27,7 @@ function Login(): JSX.Element {
 		//Check to make sure the response is a GoogleLoginResponse and that the user is actually signed in.
 		if ( "profileObj" in res && res.isSignedIn()) {
 
-			setUsername( res.profileObj.givenName );
+			setUserInfo({ username: res.profileObj.givenName, imgUrl: res.profileObj.imageUrl });
 			setJwt( res.tokenId );
 
 			fetch( "http://localhost:8080/userInfo/login", {
@@ -42,7 +42,8 @@ function Login(): JSX.Element {
 				)
 				.catch( e => console.log( e ));
 
-			refreshTokenSetup( res as GoogleLoginResponse );
+			//send the setJwt action so the refresh can also update the memory
+			refreshTokenSetup( res as GoogleLoginResponse, setJwt );
 		}
 	}
 

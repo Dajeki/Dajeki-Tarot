@@ -35,8 +35,7 @@ function CommandBar(): JSX.Element {
 							setCardsDrawn( [] );
 							setCardsDrawn( cardResponse );
 
-						}
-						}
+						}}
 						className={"icon-50px"}
 						src={`${ process.env.PUBLIC_URL }/images/symbols/action/drawcard.svg`}
 						alt={""}
