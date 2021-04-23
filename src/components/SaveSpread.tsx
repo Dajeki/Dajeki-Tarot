@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState, useRef, MouseEvent, TouchEvent } from "react";
+import { FormEvent, useContext, useState, useRef, MouseEvent } from "react";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
 import { JwtContext } from "../hooks/UserJWTContextController";
 
@@ -71,15 +71,6 @@ function SaveSpread(): JSX.Element {
 			setSelectedVal(( e.target as HTMLSelectElement ).value );
 		}
 	}
-	function handleSelectOnTouch( e: TouchEvent ) {
-		if( selectMenuRef.current ) {
-			selectMenuRef.current.size = selectMenuRef.current.size === 9 ? 1 : 9;
-		}
-		if( +( e.target as HTMLSelectElement ).value >= 0 ) {
-			setSelectedVal(( e.target as HTMLSelectElement ).value );
-		}
-		console.log( e.target );
-	}
 
 	return (
 		<div className={"saveSpread"}>
@@ -94,7 +85,6 @@ function SaveSpread(): JSX.Element {
 							ref={selectMenuRef}
 							onMouseDown={handleSelectOnClick}
 							onChange={() => { return; }} //onMouseDown handles the onChange one source of truth for custom select menu.
-							onTouchStart={handleSelectOnTouch}
 						>
 							<option value="0"></option>
 							<option value="1">Past, Present, Future</option>

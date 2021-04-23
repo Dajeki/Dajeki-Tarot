@@ -20,10 +20,10 @@ function Header(): JSX.Element {
 				<h1>Dajeki Tarot</h1>
 			</Glow>
 			<div className={"username"}>
+				<img className={"profilePic"} src={userInfo.imgUrl} />
 				<Glow style={{ display: "inline-block", justifySelf: "flex-end" }}>
 					<h3 >{userInfo.username}</h3>
 				</Glow>
-				<img className={"profilePic"} src={userInfo.imgUrl} />
 			</div>
 			<div className={"userServicesSection"}>
 				<UserInfoProvider value={{ setUserInfo }}>
