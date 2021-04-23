@@ -7,6 +7,7 @@ import "../styles/Popout.css";
 import { EPopupMenus } from "../utils/EPopupMenus";
 import SpreadInfo from "./SpreadInfo";
 import SaveSpread from "./SaveSpread";
+import PastSpread from "./PastSpread";
 
 function Popout(): JSX.Element {
 	const {
@@ -18,9 +19,9 @@ function Popout(): JSX.Element {
 		//Stupid type coehersion for enum to a number
 		switch ( +displayedMenu ) {
 			case EPopupMenus.SpreadInfo:
-				return ( <SpreadInfo/> );
+				return ( <SpreadInfo /> );
 			case EPopupMenus.PastSpread:
-				return ( <div>IN PAST SPREAD!</div> );
+				return ( <PastSpread /> );
 			case EPopupMenus.SaveSpread:
 				return ( <SaveSpread /> );
 			default:

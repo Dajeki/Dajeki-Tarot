@@ -13,6 +13,24 @@ type CardApiReturn = {
 	card_meaning_down	?: string,
 }
 
+type PastSpreadsApiReturn = {
+	id: number,
+	/** Date as UTC/GMT date. Convert to date object then to local time. */
+	date_drawn					: string,
+	card_one_spread_meaning		: string
+	card_two_spread_meaning		: string
+	card_three_spread_meaning	: string
+	direction					: string,
+	suit						: string,
+	card_name					: string,
+	card_id						: number
+	element						: string,
+	card_rank					: number,
+	card_meaning_up				?: string,
+	card_meaning_down			?: string,
+}
+
+
 type DajekiTarotUser = {
 	username: string,
 	imgUrl: string

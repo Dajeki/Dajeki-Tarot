@@ -7,14 +7,19 @@ import Popout from "./Popout";
 import { PopoutProvider } from "../hooks/PopoutContextController";
 import { DrawnCardProvider } from "../hooks/DrawnCardsContextController";
 import { DisplayedMenuProvider } from "../hooks/DisplayedMenuContextController";
+import { SavedSpreadNeedReloadProvider } from "../hooks/SavedSpreadNeedReloadContextController";
 import { JWTProvider } from "../hooks/UserJWTContextController";
 import { EPopupMenus } from "../utils/EPopupMenus";
+import { PastSpreadsProvider } from "../hooks/PastSpreadsContextController";
 
 function App(): JSX.Element {
 	const [popout, setPopout] = useState( [false, true] as [boolean, boolean] );
 	const [cardsDrawn, setCardsDrawn] = useState( [] as CardApiReturn[] );
 	const [displayedMenu, setDisplayedMenu] = useState( EPopupMenus.SpreadInfo );
 	const [jwt, setJwt] = useState( "" );
+	const [needReload, setNeedReload] = useState( true );
+	const [pastSpreads, setPastSpreads] = useState( [{}] as PastSpreadsApiReturn[] );
+
 
 	return (
 		<div className={"programContainer"}>
@@ -23,11 +28,13 @@ function App(): JSX.Element {
 				<DrawnCardProvider value={{ cardsDrawn, setCardsDrawn }}>
 					<PopoutProvider value={{ popout, setPopout }}>
 						<DisplayedMenuProvider value={{ displayedMenu, setDisplayedMenu }} >
-
-							<Popout />
-							<CardMat />
-							<CommandBar />
-
+							<SavedSpreadNeedReloadProvider value={{ needReload, setNeedReload }}>
+								<PastSpreadsProvider value={{ pastSpreads, setPastSpreads }}>
+									<Popout />
+									<CardMat />
+									<CommandBar />
+								</PastSpreadsProvider>
+							</SavedSpreadNeedReloadProvider>
 						</DisplayedMenuProvider>
 					</PopoutProvider>
 				</DrawnCardProvider>

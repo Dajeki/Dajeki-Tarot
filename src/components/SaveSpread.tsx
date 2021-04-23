@@ -1,5 +1,6 @@
 import { FormEvent, useContext, useState, useRef, MouseEvent } from "react";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
+import { SavedSpreadNeedReloadContext } from "../hooks/SavedSpreadNeedReloadContextController";
 import { JwtContext } from "../hooks/UserJWTContextController";
 
 import "../styles/SaveSpread.css";
@@ -9,6 +10,7 @@ function SaveSpread(): JSX.Element {
 	const [selectedVal, setSelectedVal] = useState( "0" );
 	const { cardsDrawn } = useContext( DrawnCardContext );
 	const { jwt } = useContext( JwtContext );
+	const { setNeedReload } = useContext( SavedSpreadNeedReloadContext );
 
 	const selectMenuRef = useRef<HTMLSelectElement>( null );
 	//Used for adding error responses
@@ -58,6 +60,7 @@ function SaveSpread(): JSX.Element {
 					}
 					if ( errorMessageRef.current && data.success ) {
 						errorMessageRef.current.innerText = data.success;
+						setNeedReload( true );
 					}
 				});
 		}
