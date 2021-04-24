@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { PastSpreadsContext } from "../hooks/PastSpreadsContextController";
 import { SavedSpreadNeedReloadContext } from "../hooks/SavedSpreadNeedReloadContextController";
 import { JwtContext } from "../hooks/UserJWTContextController";
@@ -12,7 +12,6 @@ function PastSpread(): JSX.Element {
 	const { needReload, setNeedReload } = useContext( SavedSpreadNeedReloadContext );
 
 	useEffect(() => {
-		console.log( needReload ? "Needed to hit the users past spread endpoint." : "Did not need to hit the users past spread end point." );
 		if ( needReload ) {
 			fetch( "http://localhost:8080/userInfo/past_spread", {
 				headers: {
@@ -72,9 +71,9 @@ function PastSpread(): JSX.Element {
 	}
 
 	return (
-		<div className={"savedSpreads"}>
+		<div className="savedSpreads">
 			{
-				formattedSavedSpreads()
+				!needReload && formattedSavedSpreads()
 			}
 		</div>
 	);
