@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Dajeki-Tarot/static/css/main.392ba277.chunk.css",
+    "main.js": "/Dajeki-Tarot/static/js/main.3ad9321e.chunk.js",
+    "main.js.map": "/Dajeki-Tarot/static/js/main.3ad9321e.chunk.js.map",
+    "runtime-main.js": "/Dajeki-Tarot/static/js/runtime-main.ce1a66ab.js",
+    "runtime-main.js.map": "/Dajeki-Tarot/static/js/runtime-main.ce1a66ab.js.map",
+    "static/js/2.bb206a2b.chunk.js": "/Dajeki-Tarot/static/js/2.bb206a2b.chunk.js",
+    "static/js/2.bb206a2b.chunk.js.map": "/Dajeki-Tarot/static/js/2.bb206a2b.chunk.js.map",
+    "index.html": "/Dajeki-Tarot/index.html",
+    "static/css/main.392ba277.chunk.css.map": "/Dajeki-Tarot/static/css/main.392ba277.chunk.css.map",
+    "static/js/2.bb206a2b.chunk.js.LICENSE.txt": "/Dajeki-Tarot/static/js/2.bb206a2b.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Dajeki-Tarot/static/media/starbackground.e20e72f4.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce1a66ab.js",
+    "static/js/2.bb206a2b.chunk.js",
+    "static/css/main.392ba277.chunk.css",
+    "static/js/main.3ad9321e.chunk.js"
+  ]
+}
