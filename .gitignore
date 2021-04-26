@@ -11,7 +11,8 @@
 /coverage
 
 # production
-/build
+#NORMALLY DONT INCLUDE. Hosting on github pages so decided to include for easy linking.
+#/build
 
 # misc
 .DS_Store
