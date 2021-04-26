@@ -12,7 +12,7 @@
 
 # production
 #NORMALLY DONT INCLUDE. Hosting on github pages so decided to include for easy linking.
-#/build
+/build
 
 # misc
 .DS_Store
