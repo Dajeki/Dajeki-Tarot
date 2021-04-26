@@ -1,7 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+	"short_name": "Dajeki Tarot",
+  	"name": "Three Card Draw, Dajeki Tarot",
+  	"icons": [
     {
       "src": "/symbols/image/crystalball.svg",
       "sizes": "64x64 32x32 24x24 16x16",

@@ -1,5 +1,3 @@
-//import "../lib/env"; //conditional render of development or production env variables COMMENT OUT FOR DEPLOYMENT ON HEROKU
-
 import { useState } from "react";
 import "../styles/App.css";
 import Header from "./Header";

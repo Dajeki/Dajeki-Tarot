@@ -4,10 +4,8 @@ import Glow from "./Glow";
 import { PopoutContext } from "../hooks/PopoutContextController";
 import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
 import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
-
 import { EPopupMenus } from "../utils/EPopupMenus";
 
-// TODO: Setup functionality for elements Save, previous spreads, information
 function CommandBar(): JSX.Element {
 
 	const { setPopout } = useContext( PopoutContext );
