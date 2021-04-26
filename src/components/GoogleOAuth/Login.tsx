@@ -3,6 +3,7 @@ import { UserInfoContext } from "../../hooks/UserInfoContextController";
 import { JwtContext } from "../../hooks/UserJWTContextController";
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
 import { refreshTokenSetup } from "../../utils/refreshToken";
+import { SavedSpreadNeedReloadContext } from "../../hooks/SavedSpreadNeedReloadContextController";
 
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
@@ -20,6 +21,7 @@ function Login(): JSX.Element {
 	//Context provided from header element.
 	const { setUserInfo } = useContext( UserInfoContext );
 	const { setJwt } = useContext( JwtContext );
+	const { setNeedReload } = useContext( SavedSpreadNeedReloadContext );
 
 	function onSuccess( res: GoogleLoginResponse | GoogleLoginResponseOffline ) {
 		console.log( "[Login Success] Current User:", res as GoogleLoginResponse );
@@ -29,8 +31,9 @@ function Login(): JSX.Element {
 
 			setUserInfo({ username: res.profileObj.givenName, imgUrl: res.profileObj.imageUrl });
 			setJwt( res.tokenId );
+			setNeedReload( true );
 
-			fetch( "http://localhost:8080/userInfo/login", {
+			fetch( `${ process.env.REACT_APP_API_URL }/userInfo/login`, {
 				method : "POST",
 				headers: {
 					authorization: `Bearer ${ res.tokenId }`,

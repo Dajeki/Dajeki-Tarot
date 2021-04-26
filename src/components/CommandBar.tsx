@@ -23,7 +23,7 @@ function CommandBar(): JSX.Element {
 				<Glow toggle={true}>
 					<img
 						onClick={async () => {
-							const response = await fetch( "http://localhost:8080/cards/3" );
+							const response = await fetch( `${ process.env.REACT_APP_API_URL }/cards/3` );
 							const cardResponse: CardApiReturn[] | { error: string } = await response.json();
 
 							//If there is an error property in the object we need to display that instead of messing with the cardsDrawn array

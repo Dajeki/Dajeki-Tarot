@@ -9,7 +9,6 @@ export function refreshTokenSetup( res: GoogleLoginResponse, setJwt: React.Dispa
 		refreshTiming = ( newAuthRes.expires_in || 3600 - 5 * 60 ) * 1000;
 
 		console.log( "newAuthRes:", newAuthRes );
-		//saveUserToken( newAuthRes.access_token);
 		console.log( "new auth token", newAuthRes.id_token );
 
 		setJwt( newAuthRes.id_token );

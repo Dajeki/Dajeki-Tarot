@@ -29,7 +29,7 @@ function SaveSpread(): JSX.Element {
 		//check to make sure they have drawn something.
 		if ( cardsDrawn.length ) {
 
-			fetch( "http://localhost:8080/cards/save_spread", {
+			fetch( `${ process.env.REACT_APP_API_URL }/cards/save_spread`, {
 				method : "PUT",
 				headers: {
 					"Content-Type": "application/json",

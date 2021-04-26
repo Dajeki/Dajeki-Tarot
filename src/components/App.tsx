@@ -1,3 +1,5 @@
+import "../lib/env"; //conditional render of development or production env variables COMMENT OUT FOR DEPLOYMENT ON HEROKU
+
 import { useState } from "react";
 import "../styles/App.css";
 import Header from "./Header";
@@ -24,20 +26,23 @@ function App(): JSX.Element {
 	return (
 		<div className={"programContainer"}>
 			<JWTProvider value={{ jwt, setJwt }}>
-				<Header />
-				<DrawnCardProvider value={{ cardsDrawn, setCardsDrawn }}>
-					<PopoutProvider value={{ popout, setPopout }}>
-						<DisplayedMenuProvider value={{ displayedMenu, setDisplayedMenu }} >
-							<SavedSpreadNeedReloadProvider value={{ needReload, setNeedReload }}>
-								<PastSpreadsProvider value={{ pastSpreads, setPastSpreads }}>
+				<PastSpreadsProvider value={{ pastSpreads, setPastSpreads }}>
+					<SavedSpreadNeedReloadProvider value={{ needReload, setNeedReload }}>
+						<Header />
+						<DrawnCardProvider value={{ cardsDrawn, setCardsDrawn }}>
+							<PopoutProvider value={{ popout, setPopout }}>
+								<DisplayedMenuProvider value={{ displayedMenu, setDisplayedMenu }} >
+
 									<Popout />
 									<CardMat />
 									<CommandBar />
-								</PastSpreadsProvider>
-							</SavedSpreadNeedReloadProvider>
-						</DisplayedMenuProvider>
-					</PopoutProvider>
-				</DrawnCardProvider>
+
+
+								</DisplayedMenuProvider>
+							</PopoutProvider>
+						</DrawnCardProvider>
+					</SavedSpreadNeedReloadProvider>
+				</PastSpreadsProvider>
 			</JWTProvider>
 		</div>
 	);

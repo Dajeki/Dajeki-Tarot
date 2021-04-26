@@ -12,8 +12,8 @@ function PastSpread(): JSX.Element {
 	const { needReload, setNeedReload } = useContext( SavedSpreadNeedReloadContext );
 
 	useEffect(() => {
-		if ( needReload ) {
-			fetch( "http://localhost:8080/userInfo/past_spread", {
+		if ( needReload && jwt ) {
+			fetch( `${ process.env.REACT_APP_API_URL }/userInfo/past_spread`, {
 				headers: {
 					authorization: `Bearer ${ jwt }`,
 				},
@@ -24,7 +24,7 @@ function PastSpread(): JSX.Element {
 					setNeedReload( false );
 				});
 		}
-	}, [] );
+	}, [jwt] );
 
 	function formattedSavedSpreads() : JSX.Element[] {
 		const formattedSpreads = [] as JSX.Element[];
@@ -37,7 +37,7 @@ function PastSpread(): JSX.Element {
 					<thead>
 						<tr>
 							<th colSpan={4}>{
-								`${ new Date( pastSpreads[i].date_drawn ).toLocaleDateString() } ` +
+								`${ new Date( new Date( pastSpreads[i].date_drawn ).getTime() - new Date().getTimezoneOffset()).toLocaleDateString() } ` +
 								`${ pastSpreads[i].card_one_spread_meaning } ` +
 								`${ pastSpreads[i].card_two_spread_meaning } ` +
 								`${ pastSpreads[i].card_three_spread_meaning }`
@@ -73,7 +73,7 @@ function PastSpread(): JSX.Element {
 	return (
 		<div className="savedSpreads">
 			{
-				!needReload && formattedSavedSpreads()
+				!needReload && pastSpreads.length && jwt &&  formattedSavedSpreads()
 			}
 		</div>
 	);
