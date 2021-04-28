@@ -1,6 +1,7 @@
 # Dajeki Tarot
 
 ## TODO
-- [X] Dropdown for saved spread card meaning
-- [X] Design and implement saved spread popout menu. 
-- [X] Fix select menu on save popup to have an empty value.
+- [ ] Conditionally render the login button if the user is not logged in for save spreads.
+- [ ] Conditionally render the login button if the user is not logged in for previous spreads.
+- [ ] Change URL of frontend endpoint on github.
+- [ ] Hit the backend DB on load so that initial card request doesnt take forever.
