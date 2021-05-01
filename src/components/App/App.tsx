@@ -1,16 +1,16 @@
 import { useState } from "react";
-import "../styles/App.css";
-import Header from "./Header";
-import CardMat from "./CardMat";
-import CommandBar from "./CommandBar";
-import Popout from "./Popout";
-import { PopoutProvider } from "../hooks/PopoutContextController";
-import { DrawnCardProvider } from "../hooks/DrawnCardsContextController";
-import { DisplayedMenuProvider } from "../hooks/DisplayedMenuContextController";
-import { SavedSpreadNeedReloadProvider } from "../hooks/SavedSpreadNeedReloadContextController";
-import { JWTProvider } from "../hooks/UserJWTContextController";
-import { EPopupMenus } from "../utils/EPopupMenus";
-import { PastSpreadsProvider } from "../hooks/PastSpreadsContextController";
+import "./App.css";
+import Header from "../Header/Header";
+import CardMat from "../CardMat/CardMat";
+import CommandBar from "../CommandBar/CommandBar";
+import Popout from "../Popout/Popout";
+import { PopoutProvider } from "../../hooks/PopoutContextController";
+import { DrawnCardProvider } from "../../hooks/DrawnCardsContextController";
+import { DisplayedMenuProvider } from "../../hooks/DisplayedMenuContextController";
+import { SavedSpreadNeedReloadProvider } from "../../hooks/SavedSpreadNeedReloadContextController";
+import { JWTProvider } from "../../hooks/UserJWTContextController";
+import { EPopupMenus } from "../../utils/EPopupMenus";
+import { PastSpreadsProvider } from "../../hooks/PastSpreadsContextController";
 
 function App(): JSX.Element {
 	const [popout, setPopout] = useState( [false, true] as [boolean, boolean] );

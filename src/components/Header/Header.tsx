@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../styles/Header.css";
-import Glow from "./Glow";
-import Login from "./GoogleOAuth/Login";
-import Logout from "./GoogleOAuth/Logout";
-import { UserInfoProvider } from "../hooks/UserInfoContextController";
+import Glow from "../Glow/Glow";
+import Login from "../GoogleOAuth/Login";
+import Logout from "../GoogleOAuth/Logout";
+import { UserInfoProvider } from "../../hooks/UserInfoContextController";
 
 
 function Header(): JSX.Element {

@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { PopoutContext } from "../hooks/PopoutContextController";
-import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
+import { PopoutContext } from "../../hooks/PopoutContextController";
+import { DisplayedMenuContext } from "../../hooks/DisplayedMenuContextController";
 
 import "../styles/Popout.css";
 
-import { EPopupMenus } from "../utils/EPopupMenus";
-import SpreadInfo from "./SpreadInfo";
-import SaveSpread from "./SaveSpread";
-import PastSpread from "./PastSpread";
+import { EPopupMenus } from "../../utils/EPopupMenus";
+import SpreadInfo from "../SpreadInfo/SpreadInfo";
+import SaveSpread from "../SaveSpread/SaveSpread";
+import PastSpread from "../PastSpread/PastSpread";
 
 function Popout(): JSX.Element {
 	const {

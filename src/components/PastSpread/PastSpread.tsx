@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { PastSpreadsContext } from "../hooks/PastSpreadsContextController";
-import { SavedSpreadNeedReloadContext } from "../hooks/SavedSpreadNeedReloadContextController";
-import { JwtContext } from "../hooks/UserJWTContextController";
+import { PastSpreadsContext } from "../../hooks/PastSpreadsContextController";
+import { SavedSpreadNeedReloadContext } from "../../hooks/SavedSpreadNeedReloadContextController";
+import { JwtContext } from "../../hooks/UserJWTContextController";
 
 import "../styles/PastSpreads.css";
 

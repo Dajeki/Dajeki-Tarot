@@ -1,10 +1,10 @@
 import "../styles/CommandBar.css";
 import { useContext, useState } from "react";
-import Glow from "./Glow";
-import { PopoutContext } from "../hooks/PopoutContextController";
-import { DrawnCardContext } from "../hooks/DrawnCardsContextController";
-import { DisplayedMenuContext } from "../hooks/DisplayedMenuContextController";
-import { EPopupMenus } from "../utils/EPopupMenus";
+import Glow from "../Glow/Glow";
+import { PopoutContext } from "../../hooks/PopoutContextController";
+import { DrawnCardContext } from "../../hooks/DrawnCardsContextController";
+import { DisplayedMenuContext } from "../../hooks/DisplayedMenuContextController";
+import { EPopupMenus } from "../../utils/EPopupMenus";
 
 function CommandBar(): JSX.Element {
 
