@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Glow.css";
+import "./Glow.css";
 
 type MyProps = {
 	toggle?: boolean;

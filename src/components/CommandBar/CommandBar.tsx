@@ -1,4 +1,4 @@
-import "../styles/CommandBar.css";
+import "./CommandBar.css";
 import { useContext, useState } from "react";
 import Glow from "../Glow/Glow";
 import { PopoutContext } from "../../hooks/PopoutContextController";

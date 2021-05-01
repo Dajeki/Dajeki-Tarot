@@ -1,5 +1,5 @@
-import "../styles/Card.css";
-import Glow from "./Glow";
+import "./Card.css";
+import Glow from "../Glow/Glow";
 
 type cardProp = {
 	name?: string,

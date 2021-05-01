@@ -3,7 +3,7 @@ import { DrawnCardContext } from "../../hooks/DrawnCardsContextController";
 import { SavedSpreadNeedReloadContext } from "../../hooks/SavedSpreadNeedReloadContextController";
 import { JwtContext } from "../../hooks/UserJWTContextController";
 
-import "../styles/SaveSpread.css";
+import "./SaveSpread.css";
 
 function SaveSpread(): JSX.Element {
 

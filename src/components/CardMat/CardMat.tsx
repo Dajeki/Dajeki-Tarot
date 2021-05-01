@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DrawnCardContext } from "../../hooks/DrawnCardsContextController";
-import "../styles/CardMat.css";
+import "./CardMat.css";
 import Card from "../Card/Card";
 
 function CardMat(): JSX.Element {

@@ -3,7 +3,7 @@ import { PastSpreadsContext } from "../../hooks/PastSpreadsContextController";
 import { SavedSpreadNeedReloadContext } from "../../hooks/SavedSpreadNeedReloadContextController";
 import { JwtContext } from "../../hooks/UserJWTContextController";
 
-import "../styles/PastSpreads.css";
+import "./PastSpreads.css";
 
 function PastSpread(): JSX.Element {
 

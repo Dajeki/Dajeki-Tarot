@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Header.css";
+import "./Header.css";
 import Glow from "../Glow/Glow";
 import Login from "../GoogleOAuth/Login";
 import Logout from "../GoogleOAuth/Logout";

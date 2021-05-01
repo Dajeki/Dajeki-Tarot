@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { DrawnCardContext } from "../../hooks/DrawnCardsContextController";
 
-import "../styles/SpreadInfo.css";
+import "./SpreadInfo.css";
 
 function SpreadInfo(): JSX.Element {
 

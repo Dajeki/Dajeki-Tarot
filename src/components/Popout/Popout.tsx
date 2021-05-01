@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { PopoutContext } from "../../hooks/PopoutContextController";
 import { DisplayedMenuContext } from "../../hooks/DisplayedMenuContextController";
 
-import "../styles/Popout.css";
+import "./Popout.css";
 
 import { EPopupMenus } from "../../utils/EPopupMenus";
 import SpreadInfo from "../SpreadInfo/SpreadInfo";
